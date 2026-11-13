@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERRA-X | Earth-to-Planet Intelligence</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: #edf4ff;
+            padding: 30px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 45px;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #55d6be;
+        }
+
+        .status {
+            color: #55d6be;
+            font-size: 13px;
+            border: 1px solid #286e65;
+            padding: 9px 15px;
+            border-radius: 20px;
+        }
+
+        .hero {
+            margin-bottom: 35px;
+        }
+
+        .hero h1 {
+            font-size: clamp(30px, 5vw, 48px);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: #9aacc4;
+            line-height: 1.6;
+            max-width: 700px;
+        }
+
+        h2 {
+            margin: 35px 0 20px;
+            font-size: 22px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .stat-card, .map-card, .mission-card {
+            background: #101f32;
+            border: 1px solid #20354d;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .stat-card p {
+            color: #9aacc4;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .stat-card h3 {
+            font-size: 27px;
+            color: #55d6be;
+        }
+
+        .maps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .map-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .map-card p {
+            color: #9aacc4;
+            font-size: 13px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .map-card img {
+            width: 100%;
+            display: block;
+            border-radius: 9px;
+            background: #07111f;
+        }
+
+        .mission-card {
+            max-width: 750px;
+        }
+
+        label {
+            display: block;
+            margin: 18px 0 8px;
+            color: #b9c9dc;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 13px;
+            border-radius: 8px;
+            border: 1px solid #304761;
+            font-size: 15px;
+        }
+
+        select {
+            background: #07111f;
+            color: white;
+        }
+
+        button {
+            margin-top: 22px;
+            background: #55d6be;
+            color: #07111f;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background: #77ead5;
+        }
+
+        #missionResult {
+            margin-top: 20px;
+            color: #c3d4e8;
+            line-height: 1.8;
+        }
+
+        #missionResult ul {
+            padding-left: 22px;
+            margin-top: 8px;
+        }
+
+        .note {
+            color: #8fa4bd;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-top: 18px;
+        }
+
+        footer {
+            margin-top: 45px;
+            padding-top: 20px;
+            border-top: 1px solid #20354d;
+            color: #8297b0;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 18px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">TERRA-X</div>
+    <div class="status">● SYSTEM ONLINE</div>
+</header>
+
+<section class="hero">
+    <h1>Understanding Worlds Through Earth</h1>
+
+    <p>
+        TERRA-X analyses Earth's terrain using NASA elevation data
+        and organises terrain characteristics around planetary
+        exploration mission requirements.
+    </p>
+</section>
+
+<h2>Terrain Analysis Overview</h2>
+
+<section class="stats">
+
+    <div class="stat-card">
+        <p>Minimum Elevation</p>
+        <h3 id="minimum">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Maximum Elevation</p>
+        <h3 id="maximum">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Average Elevation</p>
+        <h3 id="average">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Minimum Slope</p>
+        <h3 id="minSlope">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Maximum Slope</p>
+        <h3 id="maxSlope">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Average Slope</p>
+        <h3 id="avgSlope">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Minimum Roughness</p>
+        <h3 id="minRoughness">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Maximum Roughness</p>
+        <h3 id="maxRoughness">Loading...</h3>
+    </div>
+
+    <div class="stat-card">
+        <p>Average Roughness</p>
+        <h3 id="avgRoughness">Loading...</h3>
+    </div>
+
+</section>
+
+<h2>NASA Terrain Visualisations</h2>
+
+<section class="maps">
+
+    <div class="map-card">
+        <h3>Elevation Map</h3>
+        <p>Terrain elevation across the selected NASA SRTM tile.</p>
+
+        <img
+            src="http://127.0.0.1:8000/elevation-map"
+            alt="NASA SRTM elevation map">
+    </div>
+
+    <div class="map-card">
+        <h3>Slope Map</h3>
+        <p>Estimated terrain steepness across the same tile.</p>
+
+        <img
+            src="http://127.0.0.1:8000/slope-map"
+            alt="NASA SRTM slope map">
+    </div>
+
+    <div class="map-card">
+        <h3>Roughness Map</h3>
+        <p>Local elevation variability across the same tile.</p>
+
+        <img
+            src="http://127.0.0.1:8000/roughness-map"
+            alt="NASA terrain roughness map">
+    </div>
+
+</section>
+
+<h2>Mission Profile Explorer</h2>
+
+<section class="mission-card">
+
+    <p style="color:#9aacc4; line-height:1.6;">
+        Select a destination and mission type to identify the
+        terrain characteristics relevant to that mission.
+    </p>
+
+    <label for="planet">Target destination</label>
+
+    <select id="planet">
+        <option value="Mars">Mars</option>
+        <option value="Moon">Moon</option>
+    </select>
+
+    <label for="mission">Mission type</label>
+
+    <select id="mission">
+        <option value="Rover Mobility">Rover Mobility</option>
+        <option value="Surface Geology">Surface Geology</option>
+        <option value="Habitat Site Evaluation">Habitat Site Evaluation</option>
+    </select>
+
+    <button onclick="compareMission()">
+        Analyse Mission Requirements
+    </button>
+
+    <div id="missionResult"></div>
+
+    <p class="note">
+        This explorer identifies relevant mission criteria.
+        It does not yet perform a measured comparison with
+        lunar or Martian terrain datasets.
+    </p>
+
+</section>
+
+<footer>
+    TERRA-X | Earth-to-Planet Analogue Intelligence Engine<br>
+    Elevation source: NASA SRTM 1 Arc-Second Global V003.<br>
+    Current statistics describe the full downloaded SRTM tile,
+    not a single selected site.<br>
+    Roughness is calculated using local elevation standard
+    deviation in a 3 × 3 neighbourhood.
+</footer>
+
+<script>
+
+async function loadTerrainData() {
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/terrain-analysis"
+        );
+
+        if (!response.ok) {
+            throw new Error("Could not load terrain analysis.");
+        }
+
+        const data = await response.json();
+        const results = data.results;
+
+        document.getElementById("minimum").textContent =
+            results.minimum_elevation_m + " m";
+
+        document.getElementById("maximum").textContent =
+            results.maximum_elevation_m + " m";
+
+        document.getElementById("average").textContent =
+            results.average_elevation_m + " m";
+
+        document.getElementById("minSlope").textContent =
+            results.minimum_slope_degrees + "°";
+
+        document.getElementById("maxSlope").textContent =
+            results.maximum_slope_degrees + "°";
+
+        document.getElementById("avgSlope").textContent =
+            results.average_slope_degrees + "°";
+
+        document.getElementById("minRoughness").textContent =
+            results.minimum_roughness_m + " m";
+
+        document.getElementById("maxRoughness").textContent =
+            results.maximum_roughness_m + " m";
+
+        document.getElementById("avgRoughness").textContent =
+            results.average_roughness_m + " m";
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.querySelectorAll(".stat-card h3").forEach(element => {
+            element.textContent = "Unavailable";
+        });
+
+    }
+}
+
+
+async function compareMission() {
+
+    const planet = document.getElementById("planet").value;
+    const mission = document.getElementById("mission").value;
+
+    const resultBox = document.getElementById("missionResult");
+
+    resultBox.textContent = "Analysing mission requirements...";
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:8000/compare",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    earth_location: "S24W070 NASA SRTM tile",
+                    target_planet: planet,
+                    mission_type: mission
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Mission analysis failed.");
+        }
+
+        const data = await response.json();
+
+        resultBox.innerHTML = `
+            <h3>${data.mission_type} → ${data.target_planet}</h3>
+
+            <p>${data.message}</p>
+
+            <strong>Relevant comparison criteria:</strong>
+
+            <ul>
+                ${data.comparison_criteria.map(
+                    item => `<li>${item}</li>`
+                ).join("")}
+            </ul>
+        `;
+
+    } catch (error) {
+
+        console.error(error);
+
+        resultBox.textContent =
+            "Unable to analyse mission. Check that the backend is running.";
+
+    }
+
+}
+
+loadTerrainData();
+
+</script>
+
+</body>
+</html>
