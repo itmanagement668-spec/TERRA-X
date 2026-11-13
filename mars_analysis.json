@@ -1,0 +1,41 @@
+{
+    "planet": "Mars",
+    "dataset": "NASA MOLA MEGDR",
+    "data_source": "NASA Mars Global Surveyor",
+    "measurement_type": "Orbital altimetry-derived elevation",
+    "dimensions": {
+        "width_pixels": 5760,
+        "height_pixels": 2880,
+        "valid_elevation_pixels": 16586672
+    },
+    "resolution": {
+        "pixel_spacing_metres": 3704.4613374,
+        "approximate_resolution_km": 3.704
+    },
+    "elevation": {
+        "minimum_m": -8177.0,
+        "maximum_m": 21171.0,
+        "average_m": -721.1995239257812
+    },
+    "slope": {
+        "minimum_degrees": 0.0,
+        "maximum_degrees": 48.360767007298,
+        "average_degrees": 1.1626180600802554,
+        "valid_pixels": 15651602,
+        "polar_rows_excluded_beyond_latitude_degrees": 85
+    },
+    "roughness": {
+        "minimum_m": 0.0,
+        "maximum_m": 1890.0329215239728,
+        "average_m": 55.4978383225054,
+        "method": "3x3 local elevation standard deviation",
+        "valid_pixels": 16569396
+    },
+    "limitations": [
+        "Global gridded elevation data, not rover-scale terrain data.",
+        "Approximately 3.7 km pixel spacing.",
+        "Slope is an approximate calculation.",
+        "Roughness represents local elevation variability, not complete surface texture.",
+        "Polar rows beyond 85 degrees latitude are excluded from slope statistics."
+    ]
+}

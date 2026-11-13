@@ -2,189 +2,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERRA-X | Earth-to-Planet Intelligence</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TERRA-X | Planetary Intelligence Engine</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #07111f;
-            color: #edf4ff;
-            padding: 30px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: #07111f;
+    color: #edf4ff;
+    padding: 30px;
+}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 45px;
-        }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 45px;
+}
 
-        .logo {
-            font-size: 27px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            color: #55d6be;
-        }
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #55d6be;
+}
 
-        .status {
-            color: #55d6be;
-            font-size: 13px;
-            border: 1px solid #286e65;
-            padding: 9px 15px;
-            border-radius: 20px;
-        }
+.status {
+    color: #55d6be;
+    font-size: 13px;
+    border: 1px solid #286e65;
+    padding: 9px 15px;
+    border-radius: 20px;
+}
 
-        .hero {
-            margin-bottom: 35px;
-        }
+.hero {
+    margin-bottom: 35px;
+}
 
-        .hero h1 {
-            font-size: clamp(30px, 5vw, 48px);
-            margin-bottom: 12px;
-        }
+.hero h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin-bottom: 12px;
+}
 
-        .hero p {
-            color: #9aacc4;
-            line-height: 1.6;
-            max-width: 700px;
-        }
+.hero p {
+    color: #9aacc4;
+    line-height: 1.7;
+    max-width: 800px;
+}
 
-        h2 {
-            margin: 35px 0 20px;
-            font-size: 22px;
-        }
+h2 {
+    margin: 38px 0 20px;
+    font-size: 22px;
+}
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
+.section-description {
+    color: #9aacc4;
+    line-height: 1.6;
+    margin-top: -10px;
+    margin-bottom: 18px;
+}
 
-        .stat-card, .map-card, .mission-card {
-            background: #101f32;
-            border: 1px solid #20354d;
-            border-radius: 14px;
-            padding: 20px;
-        }
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 15px;
+}
 
-        .stat-card p {
-            color: #9aacc4;
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
+.stat-card,
+.map-card,
+.mission-card,
+.comparison-card {
+    background: #101f32;
+    border: 1px solid #20354d;
+    border-radius: 14px;
+    padding: 20px;
+}
 
-        .stat-card h3 {
-            font-size: 27px;
-            color: #55d6be;
-        }
+.stat-card p {
+    color: #9aacc4;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
 
-        .maps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
+.stat-card h3 {
+    font-size: 25px;
+    color: #55d6be;
+    overflow-wrap: anywhere;
+}
 
-        .map-card h3 {
-            margin-bottom: 8px;
-        }
+.planet-label {
+    display: inline-block;
+    color: #55d6be;
+    font-size: 12px;
+    border: 1px solid #286e65;
+    border-radius: 20px;
+    padding: 6px 12px;
+    margin-bottom: 15px;
+}
 
-        .map-card p {
-            color: #9aacc4;
-            font-size: 13px;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
+.mars-label {
+    color: #ffad7a;
+    border-color: #895337;
+}
 
-        .map-card img {
-            width: 100%;
-            display: block;
-            border-radius: 9px;
-            background: #07111f;
-        }
+.jezero-label {
+    color: #f4c77c;
+    border-color: #8b7042;
+}
 
-        .mission-card {
-            max-width: 750px;
-        }
+.maps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
 
-        label {
-            display: block;
-            margin: 18px 0 8px;
-            color: #b9c9dc;
-        }
+.map-card h3 {
+    margin-bottom: 8px;
+}
 
-        select, button {
-            width: 100%;
-            padding: 13px;
-            border-radius: 8px;
-            border: 1px solid #304761;
-            font-size: 15px;
-        }
+.map-card p {
+    color: #9aacc4;
+    font-size: 13px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
 
-        select {
-            background: #07111f;
-            color: white;
-        }
+.map-card img {
+    width: 100%;
+    display: block;
+    border-radius: 9px;
+    background: #07111f;
+}
 
-        button {
-            margin-top: 22px;
-            background: #55d6be;
-            color: #07111f;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-        }
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
 
-        button:hover {
-            background: #77ead5;
-        }
+.comparison-card h3 {
+    margin-bottom: 14px;
+}
 
-        #missionResult {
-            margin-top: 20px;
-            color: #c3d4e8;
-            line-height: 1.8;
-        }
+.comparison-card p {
+    color: #9aacc4;
+    line-height: 1.6;
+    font-size: 13px;
+}
 
-        #missionResult ul {
-            padding-left: 22px;
-            margin-top: 8px;
-        }
+.metric {
+    margin: 18px 0;
+}
 
-        .note {
-            color: #8fa4bd;
-            font-size: 12px;
-            line-height: 1.6;
-            margin-top: 18px;
-        }
+.metric-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
 
-        footer {
-            margin-top: 45px;
-            padding-top: 20px;
-            border-top: 1px solid #20354d;
-            color: #8297b0;
-            font-size: 12px;
-            line-height: 1.6;
-        }
+.metric-title span:first-child {
+    color: #b9c9dc;
+}
 
-        @media (max-width: 600px) {
-            body {
-                padding: 18px;
-            }
+.metric-title span:last-child {
+    color: #55d6be;
+    font-weight: bold;
+    text-align: right;
+}
 
-            .hero h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+.bar-background {
+    background: #07111f;
+    height: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.7s ease;
+}
+
+.earth-bar {
+    background: #55d6be;
+}
+
+.mars-bar {
+    background: #ffad7a;
+}
+
+.resolution-card {
+    background: #101f32;
+    border: 1px solid #20354d;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.resolution-card h3 {
+    margin-bottom: 12px;
+}
+
+.resolution-value {
+    color: #55d6be;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.resolution-card p {
+    color: #9aacc4;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.insight-card {
+    background: #132a32;
+    border: 1px solid #286e65;
+    border-radius: 14px;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+.insight-card h3 {
+    color: #55d6be;
+    margin-bottom: 12px;
+}
+
+.insight-card p {
+    color: #c3d4e8;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.science-note {
+    background: #172438;
+    border-left: 3px solid #ffad7a;
+    padding: 17px;
+    border-radius: 7px;
+    color: #b9c9dc;
+    line-height: 1.7;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin: 18px 0 8px;
+    color: #b9c9dc;
+}
+
+select,
+button {
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    border: 1px solid #304761;
+    font-size: 15px;
+}
+
+select {
+    background: #07111f;
+    color: white;
+}
+
+button {
+    margin-top: 22px;
+    background: #55d6be;
+    color: #07111f;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background: #77ead5;
+}
+
+#missionResult {
+    margin-top: 20px;
+    color: #c3d4e8;
+    line-height: 1.8;
+}
+
+#missionResult ul {
+    padding-left: 22px;
+    margin-top: 8px;
+}
+
+.note {
+    color: #8fa4bd;
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 18px;
+}
+
+.loading {
+    color: #9aacc4;
+}
+
+.error {
+    color: #ff9b9b;
+}
+
+footer {
+    margin-top: 45px;
+    padding-top: 20px;
+    border-top: 1px solid #20354d;
+    color: #8297b0;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 18px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -196,203 +347,717 @@
 
 <section class="hero">
     <h1>Understanding Worlds Through Earth</h1>
-
     <p>
-        TERRA-X analyses Earth's terrain using NASA elevation data
-        and organises terrain characteristics around planetary
-        exploration mission requirements.
+        TERRA-X is an Earth-to-Planet Analogue Intelligence Engine.
+        It uses NASA planetary elevation datasets to analyse terrain
+        characteristics and organise them around exploration mission needs.
+        By examining Earth environments alongside planetary terrain,
+        TERRA-X supports exploratory comparisons for future missions.
     </p>
 </section>
 
-<h2>Terrain Analysis Overview</h2>
+<h2>01 / Earth Terrain Analysis</h2>
+<p class="section-description">
+    NASA SRTM analysis of the S24W070 elevation tile in the Atacama region.
+</p>
+
+<div class="planet-label">EARTH · NASA SRTM</div>
 
 <section class="stats">
-
-    <div class="stat-card">
-        <p>Minimum Elevation</p>
-        <h3 id="minimum">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Maximum Elevation</p>
-        <h3 id="maximum">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Average Elevation</p>
-        <h3 id="average">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Minimum Slope</p>
-        <h3 id="minSlope">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Maximum Slope</p>
-        <h3 id="maxSlope">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Average Slope</p>
-        <h3 id="avgSlope">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Minimum Roughness</p>
-        <h3 id="minRoughness">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Maximum Roughness</p>
-        <h3 id="maxRoughness">Loading...</h3>
-    </div>
-
-    <div class="stat-card">
-        <p>Average Roughness</p>
-        <h3 id="avgRoughness">Loading...</h3>
-    </div>
-
+    <div class="stat-card"><p>Minimum Elevation</p><h3 id="minimum">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Elevation</p><h3 id="maximum">Loading...</h3></div>
+    <div class="stat-card"><p>Average Elevation</p><h3 id="average">Loading...</h3></div>
+    <div class="stat-card"><p>Minimum Slope</p><h3 id="minSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Slope</p><h3 id="maxSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Average Slope</p><h3 id="avgSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Minimum Roughness</p><h3 id="minRoughness">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Roughness</p><h3 id="maxRoughness">Loading...</h3></div>
+    <div class="stat-card"><p>Average Roughness</p><h3 id="avgRoughness">Loading...</h3></div>
 </section>
 
-<h2>NASA Terrain Visualisations</h2>
+<h2>02 / Earth Terrain Visualisations</h2>
 
 <section class="maps">
-
     <div class="map-card">
         <h3>Elevation Map</h3>
-        <p>Terrain elevation across the selected NASA SRTM tile.</p>
-
-        <img
-            src="http://127.0.0.1:8000/elevation-map"
-            alt="NASA SRTM elevation map">
+        <p>Elevation distribution across the NASA SRTM tile.</p>
+        <img src="http://127.0.0.1:8000/elevation-map" alt="Earth elevation map">
     </div>
-
     <div class="map-card">
         <h3>Slope Map</h3>
-        <p>Estimated terrain steepness across the same tile.</p>
-
-        <img
-            src="http://127.0.0.1:8000/slope-map"
-            alt="NASA SRTM slope map">
+        <p>Estimated steepness of the Earth's terrain.</p>
+        <img src="http://127.0.0.1:8000/slope-map" alt="Earth slope map">
     </div>
-
     <div class="map-card">
         <h3>Roughness Map</h3>
-        <p>Local elevation variability across the same tile.</p>
-
-        <img
-            src="http://127.0.0.1:8000/roughness-map"
-            alt="NASA terrain roughness map">
+        <p>Local elevation variability across the tile.</p>
+        <img src="http://127.0.0.1:8000/roughness-map" alt="Earth roughness map">
     </div>
-
 </section>
 
-<h2>Mission Profile Explorer</h2>
+<h2>03 / Global Mars Terrain Analysis</h2>
+<p class="section-description">
+    Global Martian terrain analysis using NASA Mars Global Surveyor
+    MOLA MEGDR elevation data.
+</p>
+
+<div class="planet-label mars-label">MARS · NASA MOLA MEGDR</div>
+
+<section class="stats">
+    <div class="stat-card"><p>Minimum Elevation</p><h3 id="marsMinElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Elevation</p><h3 id="marsMaxElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Average Elevation</p><h3 id="marsAvgElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Minimum Slope</p><h3 id="marsMinSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Slope</p><h3 id="marsMaxSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Average Slope</p><h3 id="marsAvgSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Minimum Roughness</p><h3 id="marsMinRoughness">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Roughness</p><h3 id="marsMaxRoughness">Loading...</h3></div>
+    <div class="stat-card"><p>Average Roughness</p><h3 id="marsAvgRoughness">Loading...</h3></div>
+</section>
+
+<div class="science-note">
+    <strong>Global Mars dataset:</strong>
+    NASA MOLA MEGDR provides a global gridded elevation model.
+    Its approximate pixel spacing is 3.704 km at the equator.
+    These measurements are not suitable for rover-scale navigation.
+</div>
+
+<h2>04 / Jezero Crater Regional Analysis</h2>
+<p class="section-description">
+    A focused regional study of the surroundings of Jezero Crater,
+    an important planetary exploration region on Mars.
+</p>
+
+<div class="planet-label jezero-label">MARS · JEZERO CRATER · NASA MOLA</div>
+
+<section class="stats">
+    <div class="stat-card"><p>Minimum Elevation</p><h3 id="jezeroMinElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Elevation</p><h3 id="jezeroMaxElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Average Elevation</p><h3 id="jezeroAvgElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Minimum Slope</p><h3 id="jezeroMinSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Slope</p><h3 id="jezeroMaxSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Average Slope</p><h3 id="jezeroAvgSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Minimum Elevation Variability</p><h3 id="jezeroMinRoughness">Loading...</h3></div>
+    <div class="stat-card"><p>Maximum Elevation Variability</p><h3 id="jezeroMaxRoughness">Loading...</h3></div>
+    <div class="stat-card"><p>Average Elevation Variability</p><h3 id="jezeroAvgRoughness">Loading...</h3></div>
+</section>
+
+<section class="comparison-grid" style="margin-top:20px;">
+    <div class="comparison-card">
+        <h3>Regional Study Location</h3>
+        <p>
+            Latitude: <strong>18.4° N</strong><br>
+            Longitude: <strong>77.5° E</strong><br>
+            Approximate study width: <strong>100 km</strong>
+        </p>
+    </div>
+    <div class="comparison-card">
+        <h3>Dataset Information</h3>
+        <p>
+            Source: NASA Mars Global Surveyor<br>
+            Instrument: Mars Orbiter Laser Altimeter<br>
+            Dataset: MOLA MEGDR<br>
+            Approximate pixel spacing at Jezero: <strong>3.515 km</strong>
+        </p>
+    </div>
+    <div class="comparison-card">
+        <h3>Regional Grid</h3>
+        <p>
+            Grid rows: <strong id="jezeroRows">Loading...</strong><br>
+            Grid columns: <strong id="jezeroColumns">Loading...</strong><br>
+            Valid elevation pixels: <strong id="jezeroPixels">Loading...</strong>
+        </p>
+    </div>
+</section>
+
+<div class="science-note">
+    <strong>Jezero scientific limitation:</strong>
+    These measurements come from a regional subset of the global
+    MOLA elevation grid. At approximately 3.5 km per pixel, the
+    dataset captures broad regional terrain variation, not individual
+    rocks, small hazards or rover-scale surface conditions.
+    Elevation variability is calculated from neighbouring elevation
+    values and is not a direct measurement of surface texture.
+</div>
+
+<h2>05 / Resolution-Matched Planetary Comparison</h2>
+<p class="section-description">
+    A regional comparison between the Atacama Desert on Earth and
+    the Jezero Crater surroundings on Mars, using approximately
+    comparable spatial resolutions.
+</p>
+
+<div class="planet-label">EARTH ↔ MARS · MATCHED SPATIAL SCALE</div>
+
+<section class="stats">
+    <div class="stat-card"><p>Earth Average Elevation</p><h3 id="matchedEarthElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Mars Average Elevation</p><h3 id="matchedMarsElevation">Loading...</h3></div>
+    <div class="stat-card"><p>Earth Average Slope</p><h3 id="matchedEarthSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Mars Average Slope</p><h3 id="matchedMarsSlope">Loading...</h3></div>
+    <div class="stat-card"><p>Earth Elevation Variability</p><h3 id="matchedEarthVariability">Loading...</h3></div>
+    <div class="stat-card"><p>Mars Elevation Variability</p><h3 id="matchedMarsVariability">Loading...</h3></div>
+</section>
+
+<h2 style="font-size:18px;margin-top:28px;">Spatial Resolution Verification</h2>
+
+<section class="comparison-grid">
+    <div class="resolution-card">
+        <h3>East-West Pixel Spacing</h3>
+        <p>Atacama · Earth</p>
+        <div class="resolution-value" id="earthEastWest">Loading...</div>
+        <p>Jezero · Mars</p>
+        <div class="resolution-value" id="marsEastWest">Loading...</div>
+        <p>Difference: <strong id="eastWestDifference">Loading...</strong></p>
+    </div>
+
+    <div class="resolution-card">
+        <h3>North-South Pixel Spacing</h3>
+        <p>Atacama · Earth</p>
+        <div class="resolution-value" id="earthNorthSouth">Loading...</div>
+        <p>Jezero · Mars</p>
+        <div class="resolution-value" id="marsNorthSouth">Loading...</div>
+        <p>Difference: <strong id="northSouthDifference">Loading...</strong></p>
+    </div>
+
+    <div class="resolution-card">
+        <h3>Analysis Grid</h3>
+        <p>Atacama · Earth</p>
+        <div class="resolution-value" id="earthGrid">Loading...</div>
+        <p>Jezero · Mars</p>
+        <div class="resolution-value" id="marsGrid">Loading...</div>
+        <p>Valid elevation cells: <strong id="matchedCells">Loading...</strong></p>
+    </div>
+</section>
+
+<h2 style="font-size:18px;margin-top:28px;">Regional Terrain Comparison</h2>
+
+<section class="comparison-grid">
+    <div class="comparison-card">
+        <h3>Average Slope</h3>
+        <p>Estimated average terrain steepness.</p>
+        <div class="metric">
+            <div class="metric-title"><span>Atacama · Earth</span><span id="chartEarthSlope">--</span></div>
+            <div class="bar-background"><div class="bar earth-bar" id="matchedBarEarthSlope"></div></div>
+        </div>
+        <div class="metric">
+            <div class="metric-title"><span>Jezero · Mars</span><span id="chartMarsSlope">--</span></div>
+            <div class="bar-background"><div class="bar mars-bar" id="matchedBarMarsSlope"></div></div>
+        </div>
+    </div>
+
+    <div class="comparison-card">
+        <h3>Average Elevation Variability</h3>
+        <p>Local elevation standard deviation in metres.</p>
+        <div class="metric">
+            <div class="metric-title"><span>Atacama · Earth</span><span id="chartEarthVariability">--</span></div>
+            <div class="bar-background"><div class="bar earth-bar" id="matchedBarEarthVariability"></div></div>
+        </div>
+        <div class="metric">
+            <div class="metric-title"><span>Jezero · Mars</span><span id="chartMarsVariability">--</span></div>
+            <div class="bar-background"><div class="bar mars-bar" id="matchedBarMarsVariability"></div></div>
+        </div>
+    </div>
+
+    <div class="comparison-card">
+        <h3>Elevation Range</h3>
+        <p>Regional minimum and maximum elevation.</p>
+        <div class="metric">
+            <div class="metric-title"><span>Atacama · Earth</span><span id="chartEarthElevation">--</span></div>
+        </div>
+        <div class="metric">
+            <div class="metric-title"><span>Jezero · Mars</span><span id="chartMarsElevation">--</span></div>
+        </div>
+        <p class="note">
+            Elevation values use different planetary reference
+            surfaces and are not directly interchangeable.
+        </p>
+    </div>
+</section>
+
+<div class="insight-card">
+    <h3>TERRA-X | Terrain Intelligence</h3>
+    <p id="terrainInsight" class="loading">
+        Generating observations from the regional terrain measurements...
+    </p>
+    <p id="resolutionInsight" class="loading"></p>
+</div>
+
+<div class="science-note">
+    <strong>Why resolution matching matters:</strong>
+    The original Earth dataset has approximately 30 m pixel spacing,
+    while the Mars MOLA dataset has approximately 3.5–3.7 km spacing.
+    TERRA-X aggregates the Earth elevation data onto a 30 × 30 grid
+    before calculating the regional terrain metrics. The Jezero
+    measurements are calculated from the corresponding regional MOLA
+    grid. This creates a more comparable spatial scale, although the
+    instruments, processing methods and geographic regions remain different.
+</div>
+
+<h2>06 / Global Earth vs Mars Overview</h2>
+<p class="section-description">
+    An exploratory overview of the original Earth SRTM tile and
+    global Mars MOLA dataset. These measurements use different
+    spatial resolutions.
+</p>
+
+<section class="comparison-grid">
+    <div class="comparison-card">
+        <h3>Average Elevation</h3>
+        <p>Mean elevation relative to each planet's reference datum.</p>
+        <div class="metric">
+            <div class="metric-title"><span>Earth</span><span id="compareEarthElevation">--</span></div>
+            <div class="bar-background"><div class="bar earth-bar" id="barEarthElevation"></div></div>
+        </div>
+        <div class="metric">
+            <div class="metric-title"><span>Mars Global</span><span id="compareMarsElevation">--</span></div>
+            <div class="bar-background"><div class="bar mars-bar" id="barMarsElevation"></div></div>
+        </div>
+    </div>
+
+    <div class="comparison-card">
+        <h3>Average Slope</h3>
+        <p>Average estimated terrain steepness.</p>
+        <div class="metric">
+            <div class="metric-title"><span>Earth</span><span id="compareEarthSlope">--</span></div>
+            <div class="bar-background"><div class="bar earth-bar" id="barEarthSlope"></div></div>
+        </div>
+        <div class="metric">
+            <div class="metric-title"><span>Mars Global</span><span id="compareMarsSlope">--</span></div>
+            <div class="bar-background"><div class="bar mars-bar" id="barMarsSlope"></div></div>
+        </div>
+    </div>
+
+    <div class="comparison-card">
+        <h3>Average Elevation Variability</h3>
+        <p>Local elevation standard deviation in metres.</p>
+        <div class="metric">
+            <div class="metric-title"><span>Earth</span><span id="compareEarthRoughness">--</span></div>
+            <div class="bar-background"><div class="bar earth-bar" id="barEarthRoughness"></div></div>
+        </div>
+        <div class="metric">
+            <div class="metric-title"><span>Mars Global</span><span id="compareMarsRoughness">--</span></div>
+            <div class="bar-background"><div class="bar mars-bar" id="barMarsRoughness"></div></div>
+        </div>
+    </div>
+</section>
+
+<div class="science-note">
+    <strong>Global comparison limitation:</strong>
+    The original Earth SRTM tile and global Mars MOLA grid have
+    substantially different spatial resolutions. Their raw
+    statistics are exploratory and should not be interpreted
+    as a controlled regional comparison.
+</div>
+
+<h2>07 / Mission Profile Explorer</h2>
 
 <section class="mission-card">
-
-    <p style="color:#9aacc4; line-height:1.6;">
-        Select a destination and mission type to identify the
-        terrain characteristics relevant to that mission.
+    <p style="color:#9aacc4;line-height:1.7;">
+        Select a destination and mission type to explore the terrain
+        characteristics relevant to planetary exploration.
     </p>
 
     <label for="planet">Target destination</label>
-
     <select id="planet">
         <option value="Mars">Mars</option>
         <option value="Moon">Moon</option>
     </select>
 
     <label for="mission">Mission type</label>
-
     <select id="mission">
         <option value="Rover Mobility">Rover Mobility</option>
         <option value="Surface Geology">Surface Geology</option>
         <option value="Habitat Site Evaluation">Habitat Site Evaluation</option>
     </select>
 
-    <button onclick="compareMission()">
-        Analyse Mission Requirements
-    </button>
+    <button onclick="compareMission()">Analyse Mission Requirements</button>
 
     <div id="missionResult"></div>
 
     <p class="note">
-        This explorer identifies relevant mission criteria.
-        It does not yet perform a measured comparison with
-        lunar or Martian terrain datasets.
+        The mission explorer identifies relevant criteria and reports
+        available datasets. It does not yet calculate a validated
+        mission suitability score.
     </p>
-
 </section>
+
+<h2>08 / Data Sources & Limitations</h2>
+
+<section class="comparison-grid">
+    <div class="comparison-card">
+        <h3>Earth Dataset</h3>
+        <p>
+            NASA SRTM 1 Arc-Second Global V003<br>
+            Source: NASA Shuttle Radar Topography Mission<br>
+            Original pixel spacing: approximately 30 metres<br>
+            Coverage used: S24W070 tile
+        </p>
+    </div>
+    <div class="comparison-card">
+        <h3>Mars Global Dataset</h3>
+        <p>
+            NASA MOLA MEGDR<br>
+            Source: Mars Global Surveyor<br>
+            Approximate pixel spacing: 3.704 kilometres at equator<br>
+            Coverage used: Global Mars elevation grid
+        </p>
+    </div>
+    <div class="comparison-card">
+        <h3>Jezero Regional Dataset</h3>
+        <p>
+            NASA MOLA MEGDR<br>
+            Source: Mars Global Surveyor<br>
+            Approximate pixel spacing: 3.515 kilometres at Jezero<br>
+            Coverage used: Approximately 100 km regional study area
+        </p>
+    </div>
+</section>
+
+<div class="science-note">
+    <strong>Important scientific limitations:</strong>
+    <ul style="padding-left:20px;margin-top:8px;">
+        <li>Elevation is not the same as surface composition.</li>
+        <li>Elevation variability is not a complete measurement of surface texture.</li>
+        <li>Slope calculations are approximate.</li>
+        <li>MOLA is too coarse for detailed rover-scale navigation.</li>
+        <li>Thermal environment and rock composition are not measured by these elevation datasets.</li>
+        <li>Resolution matching does not make different instruments scientifically identical.</li>
+        <li>TERRA-X provides exploratory terrain analysis, not a certified mission landing or route assessment.</li>
+    </ul>
+</div>
 
 <footer>
     TERRA-X | Earth-to-Planet Analogue Intelligence Engine<br>
-    Elevation source: NASA SRTM 1 Arc-Second Global V003.<br>
-    Current statistics describe the full downloaded SRTM tile,
-    not a single selected site.<br>
-    Roughness is calculated using local elevation standard
-    deviation in a 3 × 3 neighbourhood.
+    Earth elevation source: NASA SRTM 1 Arc-Second Global V003.<br>
+    Mars elevation source: NASA MOLA MEGDR, Mars Global Surveyor.<br>
+    Regional case study: Jezero Crater surroundings.<br>
+    Terrain analysis: elevation, approximate slope and local elevation variability.<br>
+    Research prototype — exploratory planetary terrain intelligence.
 </footer>
 
 <script>
+const API = "http://127.0.0.1:8000";
 
-async function loadTerrainData() {
+// FIXED: Handles both numeric values and text values.
+function showValue(id, value, unit = "") {
+    const element = document.getElementById(id);
 
-    try {
+    if (!element || value === null || value === undefined) {
+        return;
+    }
 
-        const response = await fetch(
-            "http://127.0.0.1:8000/terrain-analysis"
-        );
-
-        if (!response.ok) {
-            throw new Error("Could not load terrain analysis.");
+    if (typeof value === "number") {
+        if (!Number.isFinite(value)) {
+            element.textContent = "Unavailable";
+            return;
         }
 
-        const data = await response.json();
-        const results = data.results;
-
-        document.getElementById("minimum").textContent =
-            results.minimum_elevation_m + " m";
-
-        document.getElementById("maximum").textContent =
-            results.maximum_elevation_m + " m";
-
-        document.getElementById("average").textContent =
-            results.average_elevation_m + " m";
-
-        document.getElementById("minSlope").textContent =
-            results.minimum_slope_degrees + "°";
-
-        document.getElementById("maxSlope").textContent =
-            results.maximum_slope_degrees + "°";
-
-        document.getElementById("avgSlope").textContent =
-            results.average_slope_degrees + "°";
-
-        document.getElementById("minRoughness").textContent =
-            results.minimum_roughness_m + " m";
-
-        document.getElementById("maxRoughness").textContent =
-            results.maximum_roughness_m + " m";
-
-        document.getElementById("avgRoughness").textContent =
-            results.average_roughness_m + " m";
-
-    } catch (error) {
-
-        console.error(error);
-
-        document.querySelectorAll(".stat-card h3").forEach(element => {
-            element.textContent = "Unavailable";
-        });
-
+        element.textContent =
+            value.toLocaleString(undefined, {
+                maximumFractionDigits: 2
+            }) + unit;
+    } else {
+        element.textContent = String(value) + unit;
     }
 }
 
+function setBar(id, value, maxValue) {
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    const numericValue = Number(value);
+    const numericMax = Number(maxValue);
+
+    if (!Number.isFinite(numericValue) ||
+        !Number.isFinite(numericMax) ||
+        numericMax <= 0) {
+        element.style.width = "0%";
+        return;
+    }
+
+    const percentage = Math.min(
+        100,
+        Math.max(0, Math.abs(numericValue) / numericMax * 100)
+    );
+
+    element.style.width = percentage + "%";
+}
+
+async function fetchAPI(endpoint) {
+    const response = await fetch(API + endpoint);
+
+    if (!response.ok) {
+        throw new Error(endpoint + " returned HTTP " + response.status);
+    }
+
+    return await response.json();
+}
+
+
+// EARTH ANALYSIS
+
+async function loadEarthData() {
+    const data = await fetchAPI("/terrain-analysis");
+    const r = data.results;
+
+    showValue("minimum", r.minimum_elevation_m, " m");
+    showValue("maximum", r.maximum_elevation_m, " m");
+    showValue("average", r.average_elevation_m, " m");
+
+    showValue("minSlope", r.minimum_slope_degrees, "°");
+    showValue("maxSlope", r.maximum_slope_degrees, "°");
+    showValue("avgSlope", r.average_slope_degrees, "°");
+
+    showValue("minRoughness", r.minimum_roughness_m, " m");
+    showValue("maxRoughness", r.maximum_roughness_m, " m");
+    showValue("avgRoughness", r.average_roughness_m, " m");
+
+    return r;
+}
+
+
+// GLOBAL MARS ANALYSIS
+
+async function loadMarsData() {
+    const data = await fetchAPI("/mars-analysis");
+    const r = data.results;
+
+    showValue("marsMinElevation", r.elevation.minimum_m, " m");
+    showValue("marsMaxElevation", r.elevation.maximum_m, " m");
+    showValue("marsAvgElevation", r.elevation.average_m, " m");
+
+    showValue("marsMinSlope", r.slope.minimum_degrees, "°");
+    showValue("marsMaxSlope", r.slope.maximum_degrees, "°");
+    showValue("marsAvgSlope", r.slope.average_degrees, "°");
+
+    showValue("marsMinRoughness", r.roughness.minimum_m, " m");
+    showValue("marsMaxRoughness", r.roughness.maximum_m, " m");
+    showValue("marsAvgRoughness", r.roughness.average_m, " m");
+
+    return r;
+}
+
+
+// JEZERO ANALYSIS
+
+async function loadJezeroData() {
+    const data = await fetchAPI("/jezero-analysis");
+    const r = data.results;
+
+    showValue("jezeroMinElevation", r.elevation_m.minimum, " m");
+    showValue("jezeroMaxElevation", r.elevation_m.maximum, " m");
+    showValue("jezeroAvgElevation", r.elevation_m.average, " m");
+
+    showValue("jezeroMinSlope", r.slope_degrees.minimum, "°");
+    showValue("jezeroMaxSlope", r.slope_degrees.maximum, "°");
+    showValue("jezeroAvgSlope", r.slope_degrees.average, "°");
+
+    showValue("jezeroMinRoughness", r.local_elevation_variability_m.minimum, " m");
+    showValue("jezeroMaxRoughness", r.local_elevation_variability_m.maximum, " m");
+    showValue("jezeroAvgRoughness", r.local_elevation_variability_m.average, " m");
+
+    showValue("jezeroRows", r.grid.rows);
+    showValue("jezeroColumns", r.grid.columns);
+    showValue("jezeroPixels", r.grid.valid_elevation_pixels);
+
+    return r;
+}
+
+
+// ORIGINAL GLOBAL COMPARISON
+
+function loadGlobalComparison(earth, mars) {
+    const eElevation = earth.average_elevation_m;
+    const mElevation = mars.elevation.average_m;
+
+    const eSlope = earth.average_slope_degrees;
+    const mSlope = mars.slope.average_degrees;
+
+    const eRoughness = earth.average_roughness_m;
+    const mRoughness = mars.roughness.average_m;
+
+    showValue("compareEarthElevation", eElevation, " m");
+    showValue("compareMarsElevation", mElevation, " m");
+
+    showValue("compareEarthSlope", eSlope, "°");
+    showValue("compareMarsSlope", mSlope, "°");
+
+    showValue("compareEarthRoughness", eRoughness, " m");
+    showValue("compareMarsRoughness", mRoughness, " m");
+
+    const elevationMax = Math.max(
+        Math.abs(eElevation),
+        Math.abs(mElevation),
+        1
+    );
+
+    const slopeMax = Math.max(eSlope, mSlope, 1);
+    const roughnessMax = Math.max(eRoughness, mRoughness, 1);
+
+    setBar("barEarthElevation", eElevation, elevationMax);
+    setBar("barMarsElevation", mElevation, elevationMax);
+
+    setBar("barEarthSlope", eSlope, slopeMax);
+    setBar("barMarsSlope", mSlope, slopeMax);
+
+    setBar("barEarthRoughness", eRoughness, roughnessMax);
+    setBar("barMarsRoughness", mRoughness, roughnessMax);
+}
+
+
+// RESOLUTION-MATCHED COMPARISON
+
+async function loadMatchedComparison() {
+    const data = await fetchAPI("/matched-comparison");
+
+    const earth = data.earth;
+    const mars = data.mars;
+
+    const earthElevation = earth.elevation_m;
+    const marsElevation = mars.elevation_m;
+
+    const earthSlope = earth.slope_degrees;
+    const marsSlope = mars.slope_degrees;
+
+    const earthVariability = earth.local_elevation_variability_m;
+    const marsVariability = mars.local_elevation_variability_m;
+
+    // Measurement cards
+
+    showValue("matchedEarthElevation", earthElevation.average, " m");
+    showValue("matchedMarsElevation", marsElevation.average, " m");
+
+    showValue("matchedEarthSlope", earthSlope.average, "°");
+    showValue("matchedMarsSlope", marsSlope.average, "°");
+
+    showValue("matchedEarthVariability", earthVariability.average, " m");
+    showValue("matchedMarsVariability", marsVariability.average, " m");
+
+    // Pixel spacing
+
+    const earthX = earth.pixel_spacing_approx_m.east_west;
+    const earthY = earth.pixel_spacing_approx_m.north_south;
+
+    const marsX = mars.pixel_spacing_approx_m.east_west;
+    const marsY = mars.pixel_spacing_approx_m.north_south;
+
+    showValue("earthEastWest", earthX, " m");
+    showValue("marsEastWest", marsX, " m");
+
+    showValue("earthNorthSouth", earthY, " m");
+    showValue("marsNorthSouth", marsY, " m");
+
+    showValue("eastWestDifference", data.resolution_difference_percent.east_west, "%");
+    showValue("northSouthDifference", data.resolution_difference_percent.north_south, "%");
+
+    // Grid information
+
+    document.getElementById("earthGrid").textContent =
+        earth.grid_rows + " × " + earth.grid_columns;
+
+    document.getElementById("marsGrid").textContent =
+        mars.grid_rows + " × " + mars.grid_columns;
+
+    // FIXED: Display valid cells as text, not as a numeric value.
+    showValue(
+        "matchedCells",
+        earth.valid_elevation_cells + " / " + mars.valid_elevation_cells
+    );
+
+    // Chart values
+
+    showValue("chartEarthSlope", earthSlope.average, "°");
+    showValue("chartMarsSlope", marsSlope.average, "°");
+
+    showValue("chartEarthVariability", earthVariability.average, " m");
+    showValue("chartMarsVariability", marsVariability.average, " m");
+
+    // FIXED: Elevation ranges are strings and are now displayed correctly.
+    showValue(
+        "chartEarthElevation",
+        earthElevation.minimum.toLocaleString() +
+        " to " +
+        earthElevation.maximum.toLocaleString() +
+        " m"
+    );
+
+    showValue(
+        "chartMarsElevation",
+        marsElevation.minimum.toLocaleString() +
+        " to " +
+        marsElevation.maximum.toLocaleString() +
+        " m"
+    );
+
+    // Comparison bars
+
+    const slopeMax = Math.max(
+        earthSlope.average,
+        marsSlope.average,
+        1
+    );
+
+    const variabilityMax = Math.max(
+        earthVariability.average,
+        marsVariability.average,
+        1
+    );
+
+    setBar("matchedBarEarthSlope", earthSlope.average, slopeMax);
+    setBar("matchedBarMarsSlope", marsSlope.average, slopeMax);
+
+    setBar("matchedBarEarthVariability", earthVariability.average, variabilityMax);
+    setBar("matchedBarMarsVariability", marsVariability.average, variabilityMax);
+
+    // Automatically generated observations from measurements.
+
+    const slopeDifference = Math.abs(
+        earthSlope.average - marsSlope.average
+    );
+
+    const variabilityHigher =
+        earthVariability.average > marsVariability.average
+            ? "Atacama"
+            : "Jezero";
+
+    const slopeHigher =
+        earthSlope.average > marsSlope.average
+            ? "Atacama"
+            : "Jezero";
+
+    const slopeText =
+        slopeDifference < 0.1
+            ? "The average slopes are very close in this analysis."
+            : slopeHigher + " has the higher calculated average slope.";
+
+    const variabilityText =
+        variabilityHigher +
+        " has the higher calculated average local elevation variability.";
+
+    document.getElementById("terrainInsight").textContent =
+        slopeText + " " + variabilityText +
+        " The results describe broad regional elevation patterns, " +
+        "not rover-scale surface conditions.";
+
+    const eastDifference = data.resolution_difference_percent.east_west;
+    const northDifference = data.resolution_difference_percent.north_south;
+
+    document.getElementById("resolutionInsight").textContent =
+        "Resolution verification: east-west pixel spacing differs by " +
+        eastDifference + "% and north-south spacing differs by " +
+        northDifference + "%. The grids have similar spatial scales, " +
+        "but the datasets are not identical.";
+
+    console.log("Resolution-matched comparison loaded:", data);
+
+    return data;
+}
+
+
+// MISSION EXPLORER
 
 async function compareMission() {
-
     const planet = document.getElementById("planet").value;
     const mission = document.getElementById("mission").value;
 
@@ -401,56 +1066,86 @@ async function compareMission() {
     resultBox.textContent = "Analysing mission requirements...";
 
     try {
-
-        const response = await fetch(
-            "http://127.0.0.1:8000/compare",
-            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    earth_location: "S24W070 NASA SRTM tile",
-                    target_planet: planet,
-                    mission_type: mission
-                })
-            }
-        );
+        const response = await fetch(API + "/compare", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                earth_location: "S24W070 NASA SRTM tile",
+                target_planet: planet,
+                mission_type: mission
+            })
+        });
 
         if (!response.ok) {
-            throw new Error("Mission analysis failed.");
+            throw new Error("Mission analysis failed");
         }
 
         const data = await response.json();
 
+        const criteria = data.comparison_criteria
+            .map(item => "<li>" + item + "</li>")
+            .join("");
+
+        const availability = data.data_availability || {};
+
+        const destinationAvailability =
+            planet === "Mars"
+                ? availability.mars
+                : "Moon dataset not yet connected";
+
         resultBox.innerHTML = `
             <h3>${data.mission_type} → ${data.target_planet}</h3>
-
             <p>${data.message}</p>
-
-            <strong>Relevant comparison criteria:</strong>
-
-            <ul>
-                ${data.comparison_criteria.map(
-                    item => `<li>${item}</li>`
-                ).join("")}
-            </ul>
+            <br>
+            <strong>Relevant mission criteria:</strong>
+            <ul>${criteria}</ul>
+            <br>
+            <strong>Dataset availability:</strong>
+            <p>Earth: ${availability.earth || "Not specified"}</p>
+            <p>${planet}: ${destinationAvailability || "Not specified"}</p>
         `;
 
     } catch (error) {
-
         console.error(error);
 
         resultBox.textContent =
             "Unable to analyse mission. Check that the backend is running.";
-
     }
-
 }
 
-loadTerrainData();
+
+// INITIALISE DASHBOARD
+
+async function initialiseDashboard() {
+    try {
+        const [earth, mars, jezero] = await Promise.all([
+            loadEarthData(),
+            loadMarsData(),
+            loadJezeroData()
+        ]);
+
+        loadGlobalComparison(earth, mars);
+
+        await loadMatchedComparison();
+
+        console.log("TERRA-X dashboard loaded successfully.");
+
+    } catch (error) {
+        console.error("Dashboard loading error:", error);
+
+        const insight = document.getElementById("terrainInsight");
+
+        if (insight) {
+            insight.textContent =
+                "Some analysis data could not be loaded. " +
+                "Check that the backend is running and try refreshing.";
+        }
+    }
+}
+
+initialiseDashboard();
 
 </script>
 

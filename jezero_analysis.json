@@ -1,0 +1,40 @@
+{
+    "planet": "Mars",
+    "region": "Jezero Crater surroundings",
+    "dataset": "NASA MOLA MEGDR",
+    "data_source": "NASA Mars Global Surveyor",
+    "centre": {
+        "latitude_degrees": 18.4,
+        "longitude_east_degrees": 77.5
+    },
+    "region_width_approximate_km": 100.0,
+    "grid": {
+        "rows": 29,
+        "columns": 31,
+        "pixel_spacing_at_equator_m": 3704.4613374,
+        "approximate_pixel_spacing_at_region_m": 3515.07,
+        "valid_elevation_pixels": 899
+    },
+    "elevation_m": {
+        "minimum": -3425.0,
+        "maximum": -780.0,
+        "average": -2240.88
+    },
+    "slope_degrees": {
+        "minimum": 0.04,
+        "maximum": 12.82,
+        "average": 1.95
+    },
+    "local_elevation_variability_m": {
+        "minimum": 10.96,
+        "maximum": 541.14,
+        "average": 107.51
+    },
+    "limitations": [
+        "MOLA data has approximately 3.7 km pixel spacing at the equator.",
+        "This is a regional subset of a global gridded elevation model.",
+        "Slope is an approximate calculation.",
+        "Local elevation variability is not complete surface roughness.",
+        "This dataset cannot establish rover-scale safety or mobility."
+    ]
+}

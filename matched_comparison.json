@@ -1,0 +1,91 @@
+{
+    "project": "TERRA-X",
+    "analysis": "Approximate spatial-resolution-matched terrain comparison",
+    "comparison_method": {
+        "earth_method": "SRTM elevation averaged onto a 30 x 30 grid",
+        "mars_method": "MOLA elevation extracted around Jezero",
+        "terrain_metrics": [
+            "Elevation",
+            "Slope",
+            "Local elevation variability"
+        ],
+        "resolution_note": "Both regions are analysed at approximately 3.5 to 3.8 km pixel spacing. The grids are similar in scale, not identical."
+    },
+    "resolution_difference_percent": {
+        "east_west": 3.11,
+        "north_south": 0.32
+    },
+    "earth": {
+        "grid_rows": 30,
+        "grid_columns": 30,
+        "valid_elevation_cells": 900,
+        "elevation_m": {
+            "minimum": 653.0,
+            "maximum": 3122.0,
+            "average": 1680.55
+        },
+        "slope_degrees": {
+            "minimum": 0.04,
+            "maximum": 5.95,
+            "average": 1.84
+        },
+        "local_elevation_variability_m": {
+            "minimum": 5.98,
+            "maximum": 256.96,
+            "average": 95.53
+        },
+        "valid_slope_cells": 784,
+        "valid_roughness_cells": 784,
+        "region": "Atacama Desert, Chile",
+        "planet": "Earth",
+        "dataset": "NASA SRTM 1 Arc-Second Global",
+        "source_file": "S24W070.hgt",
+        "pixel_spacing_approx_m": {
+            "east_west": 3405.65,
+            "north_south": 3692.73
+        }
+    },
+    "mars": {
+        "grid_rows": 29,
+        "grid_columns": 31,
+        "valid_elevation_cells": 899,
+        "elevation_m": {
+            "minimum": -3425.0,
+            "maximum": -780.0,
+            "average": -2240.88
+        },
+        "slope_degrees": {
+            "minimum": 0.04,
+            "maximum": 12.82,
+            "average": 1.92
+        },
+        "local_elevation_variability_m": {
+            "minimum": 10.96,
+            "maximum": 541.14,
+            "average": 107.51
+        },
+        "valid_slope_cells": 783,
+        "valid_roughness_cells": 783,
+        "region": "Jezero Crater surroundings",
+        "planet": "Mars",
+        "dataset": "NASA MOLA MEGDR",
+        "source_file": "megt90n000eb.img",
+        "centre": {
+            "latitude_degrees": 18.4,
+            "longitude_east_degrees": 77.5
+        },
+        "pixel_spacing_approx_m": {
+            "east_west": 3515.07,
+            "north_south": 3704.46
+        }
+    },
+    "scientific_limitations": [
+        "Earth and Mars measurements come from different instruments.",
+        "The regions are geographically different.",
+        "SRTM and MOLA have different measurement and processing characteristics.",
+        "Slope is an approximate calculation from gridded elevation.",
+        "Local elevation variability is not a complete measurement of surface texture.",
+        "This comparison does not establish rover-scale safety or mobility.",
+        "Similar pixel spacing does not make the datasets scientifically identical."
+    ]
+}
